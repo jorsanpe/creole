@@ -1,0 +1,11 @@
+// Data structs start with lowercase
+struct message {
+  // Basic numeric types are those for C
+  int size;
+  
+  i32 signed_integer;
+  u32 unsigned_integer;
+  f32 ieee_754_32_bit;
+  f64 ieee_754_64_bit;
+  dec ieee_754_decimal;
+}

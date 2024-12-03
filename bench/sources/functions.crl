@@ -1,0 +1,19 @@
+// No specifieds mean function does not return anything
+// Parenthesis are required in implementations
+foo() {
+
+}
+
+// Functions accept arguments
+bar(String arg1) {
+  message message; // Lazy instance in stack, only evaluated on use
+}
+
+// Functions can return values
+String baz() {
+  return "A string is returned"; // Literal strings are treated as String
+}
+
+// Functions are written in lowerCamelCase
+validFunctionName() {
+}

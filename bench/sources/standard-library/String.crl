@@ -1,0 +1,13 @@
+
+class String {
+}
+
+test "literal strings have type String" {
+  expect("literal string".class).toEqual(String);
+}
+
+test "all strings can be formatted" {
+  int number = 1;
+
+  expect("string {number}").toEqual("string 1");
+}

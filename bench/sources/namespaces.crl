@@ -1,0 +1,19 @@
+// default namespace is root
+// No globals allowed in the root namespace
+
+// namespaces can contain anything
+namespace foo {
+  // Globals can be defined in namespaces
+  int namespace_global;
+}
+
+// namespaces can be extended
+namespace foo {
+}
+
+// standard library namespace cannot be extended
+
+someFunction() {
+  // namespaces are referred to using double colons
+  foo::namespace_global += 1;
+}

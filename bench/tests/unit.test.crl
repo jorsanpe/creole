@@ -1,0 +1,10 @@
+// Files with .test.ct extension are interpreted as tests
+
+test "some test name" {
+  // Expectations?
+  assert true == true;
+  expect(true).toEqual(true);
+
+  // Mocks/spies?
+  spy(Queue)
+}

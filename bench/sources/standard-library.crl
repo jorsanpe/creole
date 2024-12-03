@@ -1,0 +1,28 @@
+// A standard library will implement all basic types
+// The standard library should be OS-independent
+
+class String {
+}
+
+// Do we need to distinguish between Array and List?
+class Array {
+}
+
+class List {
+}
+
+class Dict {
+}
+
+// The Agent is the runtime model for this language
+class Agent { 
+}
+
+// Standard library namespace
+namespace ct {
+  Dict parseJson(String string) {
+  }
+
+  // Standard print outputs a line at the end
+  print(String s);
+}

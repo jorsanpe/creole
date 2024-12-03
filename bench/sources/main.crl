@@ -1,0 +1,7 @@
+// The main always starts in a file called main.ct
+fn main() {
+  String world = "world";
+
+  // All strings have double quotes and are formatted
+  print("Hello {world}!");
+}

@@ -1,0 +1,5 @@
+fn main() {
+}
+------
+def main():
+    pass

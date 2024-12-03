@@ -1,0 +1,20 @@
+// Class names start with uppercase
+// Implementation inline without headers
+
+// Interfaces are allowed
+interface Queue {
+  Result send(message m);
+}
+
+// There's no inheritance, however, a class can implement an
+// interface
+class PosixQueue implements Queue {
+  // The init function is called on instantiation
+  init() {
+  }
+
+  // Methods are implemented like functions
+  Result send(message m) {
+
+  }
+}
