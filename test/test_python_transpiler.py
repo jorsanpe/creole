@@ -10,11 +10,16 @@ def dedent(string):
 
 class TestFunction(unittest.TestCase):
     def test_transpilations(self):
-        for filename in os.listdir("test/c_transpiler"):
-            with open(f'test/c_transpiler/{filename}', "r") as stream:
-                full = stream.read()
-            creole, python = full.split("------")
+        for filename in os.listdir("test/python_transpiler"):
+            with self.subTest(filename, filename=filename):
+                with open(f'test/python_transpiler/{filename}', "r") as stream:
+                    full = stream.read()
+                creole, python = full.split("------")
 
-            transpiled = transpile(creole, "python")
+                transpiled = transpile(creole, "python")
 
-            self.assertEqual(transpiled, python.lstrip())
+                self.assertEqual(
+                    transpiled,
+                    python.lstrip(),
+                    f'{filename}'
+                )
