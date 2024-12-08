@@ -1,6 +1,6 @@
 from antlr4 import *
-from creole.creole_lexer import creole_lexer
-from creole.creole_parser import creole_parser
+from creole.antlr.creole_lexer import creole_lexer
+from creole.antlr.creole_parser import creole_parser
 from creole.transpilers import c, python
 
 

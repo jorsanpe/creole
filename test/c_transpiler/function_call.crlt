@@ -1,0 +1,7 @@
+fn main() {
+    foo();
+}
+------
+void main(void) {
+    foo();
+}

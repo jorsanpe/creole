@@ -1,6 +1,6 @@
 import io
-from creole.creole_parserListener import creole_parserListener
-from creole.creole_parser import creole_parser
+from creole.antlr.creole_parserListener import creole_parserListener
+from creole.antlr.creole_parser import creole_parser
 
 
 INDENT = 4
@@ -16,6 +16,7 @@ class Transpiler(creole_parserListener):
         function_identifier = ctx.children[1]
         self.emit(f'def {function_identifier}():')
         self.indent += INDENT
+        self.empty_function = True
 
     def enterStatement(self, ctx: creole_parser.StatementContext):
         self.empty_function = False
