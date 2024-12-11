@@ -1,0 +1,25 @@
+{
+  "name": "creole-lang",
+  "displayName": "Creole Lang",
+  "description": "Syntax highlighting for the creole lang",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "creole",
+      "aliases": ["Creole", "creole"],
+      "extensions": [".cre"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "creole",
+      "scopeName": "source.creole",
+      "path": "./syntaxes/creole.tmLanguage.json"
+    }]
+  }
+}
