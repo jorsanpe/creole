@@ -10,6 +10,9 @@
 		},
 		{
 			"include": "#comment"
+		},
+		{
+			"include": "#program"
 		}
 	],
 	"repository": {
@@ -34,6 +37,17 @@
 			"name": "comment.line.double-slash",
 			"begin": "//",
 			"end": "\n"
+		},
+		"program": {
+			"patterns": [
+				{
+					"include": "#function"
+				}
+			]
+		},
+		"function": {
+			"name": "meta.function.creole",
+			"begin": "\\b(fn)\\s+ [[:alpha:]_][[:word:]]*\\("
 		}
 	},
 	"scopeName": "source.creole"

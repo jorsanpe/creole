@@ -4,6 +4,22 @@ options {
     tokenVocab = creole_lexer;
 }
 
+program
+    : block*;
+
+block
+    : function
+    | namespace;
+
+namespace
+    : NAMESPACE Identifier LBRACE program RBRACE;
+
+//class
+//    :;
+//
+//test
+//    :;
+
 function
     : FUNCTION Identifier LPAREN RPAREN LBRACE statements RBRACE;
 
@@ -14,7 +30,15 @@ statement
     : functionCall;
 
 functionCall
-    : Identifier LPAREN functionArguments RPAREN SEMI;
+    : namespaceReference Identifier LPAREN functionArguments RPAREN SEMI;
+
+namespaceReference
+    : namespaceName DOUBLE_COLON namespaceReference
+    | namespaceName DOUBLE_COLON
+    |;
+
+namespaceName
+    : Identifier;
 
 functionArguments
     : functionArgument

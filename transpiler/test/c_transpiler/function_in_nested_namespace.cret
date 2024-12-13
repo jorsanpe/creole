@@ -1,0 +1,16 @@
+namespace Root {
+    namespace Nested {
+        fn main() {
+            foo();
+        }
+    }
+
+    fn bar() {
+    }
+}
+------
+void Root_Nested_main(void) {
+    foo();
+}
+void Root_bar(void) {
+}

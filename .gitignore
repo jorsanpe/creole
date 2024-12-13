@@ -1,2 +1,6 @@
 *.pyc
 .pytest_cache
+.idea
+transpiler/.idea
+vscode-creole-lang/.vscode
+.vscodeignore

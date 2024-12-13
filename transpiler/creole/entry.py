@@ -9,7 +9,7 @@ def transpile(source_code, target_language):
     lexer = creole_lexer(input_stream)
     token_stream = CommonTokenStream(lexer)
     parser = creole_parser(token_stream)
-    tree = parser.function()
+    tree = parser.program()
     transpiler = None
     if target_language == "C":
         transpiler = c.Transpiler()

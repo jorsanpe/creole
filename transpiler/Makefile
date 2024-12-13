@@ -23,9 +23,9 @@ $(PARSER_FILES): creole/antlr/parser.interp
 	@: # Do nothing, the files are already created
 
 parse:
-	python creole/creole.py creole/samples/main.crl
+	python creole.py samples/main.cre
 
 test: build
-	pytest-3
+	pytest-3 -s
 
 .PHONY: test

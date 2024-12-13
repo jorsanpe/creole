@@ -6,8 +6,7 @@ interface Queue {
   Result send(message m);
 }
 
-// There's no inheritance, however, a class can implement an
-// interface
+// There's no inheritance, however, a class can implement an interface
 class PosixQueue implements Queue {
   // The init function is called on instantiation
   init() {

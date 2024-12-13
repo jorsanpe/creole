@@ -1,0 +1,9 @@
+namespace Root {
+    fn main() {
+        foo();
+    }
+}
+------
+void Root_main(void) {
+    foo();
+}

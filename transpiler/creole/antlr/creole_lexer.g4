@@ -2,6 +2,7 @@ lexer grammar creole_lexer;
 
 CLASS: 'class';
 FUNCTION: 'fn';
+NAMESPACE: 'namespace';
 
 IntegerLiteral:
     DecimalIntegerLiteral
@@ -45,6 +46,7 @@ RBRACE: '}';
 SEMI: ';';
 ASSIGN: '=';
 COMMA: ',';
+DOUBLE_COLON: '::';
 
 StringLiteral: '"' StringCharacters? '"';
 fragment StringCharacters: StringCharacter+;

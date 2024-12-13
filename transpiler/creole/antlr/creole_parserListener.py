@@ -8,6 +8,33 @@ else:
 # This class defines a complete listener for a parse tree produced by creole_parser.
 class creole_parserListener(ParseTreeListener):
 
+    # Enter a parse tree produced by creole_parser#program.
+    def enterProgram(self, ctx:creole_parser.ProgramContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#program.
+    def exitProgram(self, ctx:creole_parser.ProgramContext):
+        pass
+
+
+    # Enter a parse tree produced by creole_parser#block.
+    def enterBlock(self, ctx:creole_parser.BlockContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#block.
+    def exitBlock(self, ctx:creole_parser.BlockContext):
+        pass
+
+
+    # Enter a parse tree produced by creole_parser#namespace.
+    def enterNamespace(self, ctx:creole_parser.NamespaceContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#namespace.
+    def exitNamespace(self, ctx:creole_parser.NamespaceContext):
+        pass
+
+
     # Enter a parse tree produced by creole_parser#function.
     def enterFunction(self, ctx:creole_parser.FunctionContext):
         pass
@@ -41,6 +68,24 @@ class creole_parserListener(ParseTreeListener):
 
     # Exit a parse tree produced by creole_parser#functionCall.
     def exitFunctionCall(self, ctx:creole_parser.FunctionCallContext):
+        pass
+
+
+    # Enter a parse tree produced by creole_parser#namespaceReference.
+    def enterNamespaceReference(self, ctx:creole_parser.NamespaceReferenceContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#namespaceReference.
+    def exitNamespaceReference(self, ctx:creole_parser.NamespaceReferenceContext):
+        pass
+
+
+    # Enter a parse tree produced by creole_parser#namespaceName.
+    def enterNamespaceName(self, ctx:creole_parser.NamespaceNameContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#namespaceName.
+    def exitNamespaceName(self, ctx:creole_parser.NamespaceNameContext):
         pass
 
 

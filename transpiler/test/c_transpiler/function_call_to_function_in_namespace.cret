@@ -1,0 +1,7 @@
+fn main() {
+    Root::foo();
+}
+------
+void main(void) {
+    foo();
+}
