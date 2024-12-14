@@ -1,26 +1,39 @@
 #!/usr/bin/env python
 import argparse
 import sys
-from creole import entry
+from creole.commands.run import run
+from creole.commands.transpile import transpile
 
 
-def argument_parser():
-    parser = argparse.ArgumentParser(prog='creole', description='invoke the creole parser')
-    parser.add_argument('-o', '--output-file', help='output file')
-    parser.add_argument('-l', '--language', help='output language', default="C", choices=["C", "python"])
-    parser.add_argument('input_file', help='input files')
+def top_level_parser():
+    parser = argparse.ArgumentParser(description='creole: an opinionated programming language')
+    parser.add_argument('-v', '--version',
+                        action='version',
+                        help='show version and exit')
+    parser.add_argument('command',
+                        choices=['run', 'transpile'],
+                        nargs=argparse.REMAINDER)
     return parser
 
 
-def main(argv):
-    parser = argument_parser()
-    args = parser.parse_args(argv)
+commands = {
+    'run': run,
+    'transpile': transpile
+}
 
-    with open(args.input_file, "r") as stream:
-        source_code = stream.read()
-    transpiled = entry.transpile(source_code, args.language)
-    print(transpiled)
+
+def main():
+    args = top_level_parser().parse_args(sys.argv[1:])
+
+    if not args.command:
+        print('invalid command')
+        sys.exit(0)
+
+    command_to_execute = args.command[0]
+    command_arguments = args.command[1:]
+
+    commands[command_to_execute](command_arguments)
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main()
