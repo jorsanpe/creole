@@ -33,7 +33,7 @@ functionCall
     : namespaceReference Identifier LPAREN functionArguments RPAREN SEMI;
 
 namespaceReference
-    : namespaceName DOUBLE_COLON namespaceReference
+    : namespaceReference namespaceName DOUBLE_COLON
     | namespaceName DOUBLE_COLON
     |;
 

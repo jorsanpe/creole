@@ -34,13 +34,23 @@ class Transpiler(creole_parserListener):
         self.emit('}')
 
     def enterFunctionCall(self, ctx: creole_parser.FunctionCallContext):
+        namespace_reference = self.namespace_reference(ctx.children[0])
         identifier = self.first_identifier(ctx)
         if identifier.symbol.text == "print":
             self.emit_include("stdio.h")
             self.emit_start(f'printf(')
             self.print_function = True
         else:
-            self.emit_start(f'{identifier}(')
+            self.emit_start(f'{self.function_call_name(namespace_reference, identifier)}(')
+
+    def namespace_reference(self, ctx):
+        if not ctx.children:
+            return []
+
+        if ctx.children[0].getRuleIndex() == creole_parser.RULE_namespaceReference:
+            return self.namespace_reference(ctx.children[0]) + [ctx.children[1].children[0]]
+
+        return [ctx.children[0].children[0]]
 
     def enterFunctionArguments(self, ctx: creole_parser.FunctionArgumentsContext):
         function_arguments = ctx
@@ -53,17 +63,26 @@ class Transpiler(creole_parserListener):
         self.emit_end(');')
         if self.print_function:
             self.emit(f'printf("\\n");')
+
     def first_identifier(self, context):
         for node in context.children:
             if hasattr(node, 'symbol') and node.symbol.type == creole_parser.Identifier:
                 return node
         return None
 
-    def function_name(self, function_identifier):
+    def function_name(self, identifier):
         return "_".join(
             map(
-                lambda identifier: identifier.symbol.text,
-                self.namespace_path + [function_identifier]
+                lambda ident: ident.symbol.text,
+                self.namespace_path + [identifier]
+            )
+        )
+
+    def function_call_name(self, namespace, identifier):
+        return "_".join(
+            map(
+                lambda ident: ident.symbol.text,
+                namespace + [identifier]
             )
         )
 

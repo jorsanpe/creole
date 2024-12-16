@@ -4,3 +4,5 @@
 transpiler/.idea
 vscode-creole-lang/.vscode
 .vscodeignore
+transpiler/samples/build
+transpiler/build

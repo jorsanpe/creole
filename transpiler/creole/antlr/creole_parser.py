@@ -10,32 +10,34 @@ else:
 
 def serializedATN():
     return [
-        4,1,16,88,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,16,94,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,1,0,5,0,24,8,0,10,0,12,0,27,
         9,0,1,1,1,1,3,1,31,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,
         3,1,3,1,3,1,3,1,4,5,4,48,8,4,10,4,12,4,51,9,4,1,5,1,5,1,6,1,6,1,
-        6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,70,8,7,1,8,
-        1,8,1,9,1,9,1,9,1,9,5,9,78,8,9,10,9,12,9,81,9,9,1,9,3,9,84,8,9,1,
-        10,1,10,1,10,0,0,11,0,2,4,6,8,10,12,14,16,18,20,0,0,84,0,25,1,0,
-        0,0,2,30,1,0,0,0,4,32,1,0,0,0,6,38,1,0,0,0,8,49,1,0,0,0,10,52,1,
-        0,0,0,12,54,1,0,0,0,14,69,1,0,0,0,16,71,1,0,0,0,18,83,1,0,0,0,20,
-        85,1,0,0,0,22,24,3,2,1,0,23,22,1,0,0,0,24,27,1,0,0,0,25,23,1,0,0,
-        0,25,26,1,0,0,0,26,1,1,0,0,0,27,25,1,0,0,0,28,31,3,6,3,0,29,31,3,
-        4,2,0,30,28,1,0,0,0,30,29,1,0,0,0,31,3,1,0,0,0,32,33,5,3,0,0,33,
-        34,5,14,0,0,34,35,5,7,0,0,35,36,3,0,0,0,36,37,5,8,0,0,37,5,1,0,0,
-        0,38,39,5,2,0,0,39,40,5,14,0,0,40,41,5,5,0,0,41,42,5,6,0,0,42,43,
-        5,7,0,0,43,44,3,8,4,0,44,45,5,8,0,0,45,7,1,0,0,0,46,48,3,10,5,0,
-        47,46,1,0,0,0,48,51,1,0,0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,9,1,0,
-        0,0,51,49,1,0,0,0,52,53,3,12,6,0,53,11,1,0,0,0,54,55,3,14,7,0,55,
-        56,5,14,0,0,56,57,5,5,0,0,57,58,3,18,9,0,58,59,5,6,0,0,59,60,5,9,
-        0,0,60,13,1,0,0,0,61,62,3,16,8,0,62,63,5,12,0,0,63,64,3,14,7,0,64,
-        70,1,0,0,0,65,66,3,16,8,0,66,67,5,12,0,0,67,70,1,0,0,0,68,70,1,0,
-        0,0,69,61,1,0,0,0,69,65,1,0,0,0,69,68,1,0,0,0,70,15,1,0,0,0,71,72,
-        5,14,0,0,72,17,1,0,0,0,73,84,3,20,10,0,74,79,3,20,10,0,75,76,5,11,
-        0,0,76,78,3,20,10,0,77,75,1,0,0,0,78,81,1,0,0,0,79,77,1,0,0,0,79,
-        80,1,0,0,0,80,84,1,0,0,0,81,79,1,0,0,0,82,84,1,0,0,0,83,73,1,0,0,
-        0,83,74,1,0,0,0,83,82,1,0,0,0,84,19,1,0,0,0,85,86,5,13,0,0,86,21,
-        1,0,0,0,6,25,30,49,69,79,83
+        6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,67,8,7,1,7,1,7,1,7,1,7,
+        5,7,73,8,7,10,7,12,7,76,9,7,1,8,1,8,1,9,1,9,1,9,1,9,5,9,84,8,9,10,
+        9,12,9,87,9,9,1,9,3,9,90,8,9,1,10,1,10,1,10,0,1,14,11,0,2,4,6,8,
+        10,12,14,16,18,20,0,0,90,0,25,1,0,0,0,2,30,1,0,0,0,4,32,1,0,0,0,
+        6,38,1,0,0,0,8,49,1,0,0,0,10,52,1,0,0,0,12,54,1,0,0,0,14,66,1,0,
+        0,0,16,77,1,0,0,0,18,89,1,0,0,0,20,91,1,0,0,0,22,24,3,2,1,0,23,22,
+        1,0,0,0,24,27,1,0,0,0,25,23,1,0,0,0,25,26,1,0,0,0,26,1,1,0,0,0,27,
+        25,1,0,0,0,28,31,3,6,3,0,29,31,3,4,2,0,30,28,1,0,0,0,30,29,1,0,0,
+        0,31,3,1,0,0,0,32,33,5,3,0,0,33,34,5,14,0,0,34,35,5,7,0,0,35,36,
+        3,0,0,0,36,37,5,8,0,0,37,5,1,0,0,0,38,39,5,2,0,0,39,40,5,14,0,0,
+        40,41,5,5,0,0,41,42,5,6,0,0,42,43,5,7,0,0,43,44,3,8,4,0,44,45,5,
+        8,0,0,45,7,1,0,0,0,46,48,3,10,5,0,47,46,1,0,0,0,48,51,1,0,0,0,49,
+        47,1,0,0,0,49,50,1,0,0,0,50,9,1,0,0,0,51,49,1,0,0,0,52,53,3,12,6,
+        0,53,11,1,0,0,0,54,55,3,14,7,0,55,56,5,14,0,0,56,57,5,5,0,0,57,58,
+        3,18,9,0,58,59,5,6,0,0,59,60,5,9,0,0,60,13,1,0,0,0,61,62,6,7,-1,
+        0,62,63,3,16,8,0,63,64,5,12,0,0,64,67,1,0,0,0,65,67,1,0,0,0,66,61,
+        1,0,0,0,66,65,1,0,0,0,67,74,1,0,0,0,68,69,10,3,0,0,69,70,3,16,8,
+        0,70,71,5,12,0,0,71,73,1,0,0,0,72,68,1,0,0,0,73,76,1,0,0,0,74,72,
+        1,0,0,0,74,75,1,0,0,0,75,15,1,0,0,0,76,74,1,0,0,0,77,78,5,14,0,0,
+        78,17,1,0,0,0,79,90,3,20,10,0,80,85,3,20,10,0,81,82,5,11,0,0,82,
+        84,3,20,10,0,83,81,1,0,0,0,84,87,1,0,0,0,85,83,1,0,0,0,85,86,1,0,
+        0,0,86,90,1,0,0,0,87,85,1,0,0,0,88,90,1,0,0,0,89,79,1,0,0,0,89,80,
+        1,0,0,0,89,88,1,0,0,0,90,19,1,0,0,0,91,92,5,13,0,0,92,21,1,0,0,0,
+        7,25,30,49,66,74,85,89
     ]
 
 class creole_parser ( Parser ):
@@ -408,18 +410,18 @@ class creole_parser ( Parser ):
 
         localctx = creole_parser.StatementsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_statements)
-        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 49
             self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==14:
-                self.state = 46
-                self.statement()
+            _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
+                    self.state = 46
+                    self.statement() 
                 self.state = 51
                 self._errHandler.sync(self)
-                _la = self._input.LA(1)
+                _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -532,7 +534,7 @@ class creole_parser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 54
-            self.namespaceReference()
+            self.namespaceReference(0)
             self.state = 55
             self.match(creole_parser.Identifier)
             self.state = 56
@@ -589,45 +591,58 @@ class creole_parser ( Parser ):
 
 
 
-
-    def namespaceReference(self):
-
-        localctx = creole_parser.NamespaceReferenceContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_namespaceReference)
+    def namespaceReference(self, _p:int=0):
+        _parentctx = self._ctx
+        _parentState = self.state
+        localctx = creole_parser.NamespaceReferenceContext(self, self._ctx, _parentState)
+        _prevctx = localctx
+        _startState = 14
+        self.enterRecursionRule(localctx, 14, self.RULE_namespaceReference, _p)
         try:
-            self.state = 69
+            self.enterOuterAlt(localctx, 1)
+            self.state = 66
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 61
-                self.namespaceName()
                 self.state = 62
-                self.match(creole_parser.DOUBLE_COLON)
+                self.namespaceName()
                 self.state = 63
-                self.namespaceReference()
+                self.match(creole_parser.DOUBLE_COLON)
                 pass
 
             elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 65
-                self.namespaceName()
-                self.state = 66
-                self.match(creole_parser.DOUBLE_COLON)
                 pass
 
-            elif la_ == 3:
-                self.enterOuterAlt(localctx, 3)
 
-                pass
-
+            self._ctx.stop = self._input.LT(-1)
+            self.state = 74
+            self._errHandler.sync(self)
+            _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
+                    if self._parseListeners is not None:
+                        self.triggerExitRuleEvent()
+                    _prevctx = localctx
+                    localctx = creole_parser.NamespaceReferenceContext(self, _parentctx, _parentState)
+                    self.pushNewRecursionContext(localctx, _startState, self.RULE_namespaceReference)
+                    self.state = 68
+                    if not self.precpred(self._ctx, 3):
+                        from antlr4.error.Errors import FailedPredicateException
+                        raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
+                    self.state = 69
+                    self.namespaceName()
+                    self.state = 70
+                    self.match(creole_parser.DOUBLE_COLON) 
+                self.state = 76
+                self._errHandler.sync(self)
+                _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
             self._errHandler.recover(self, re)
         finally:
-            self.exitRule()
+            self.unrollRecursionContexts(_parentctx)
         return localctx
 
 
@@ -667,7 +682,7 @@ class creole_parser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_namespaceName)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 71
+            self.state = 77
             self.match(creole_parser.Identifier)
         except RecognitionException as re:
             localctx.exception = re
@@ -724,28 +739,28 @@ class creole_parser ( Parser ):
         self.enterRule(localctx, 18, self.RULE_functionArguments)
         self._la = 0 # Token type
         try:
-            self.state = 83
+            self.state = 89
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 73
+                self.state = 79
                 self.functionArgument()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 74
+                self.state = 80
                 self.functionArgument()
-                self.state = 79
+                self.state = 85
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==11:
-                    self.state = 75
-                    self.match(creole_parser.COMMA)
-                    self.state = 76
-                    self.functionArgument()
                     self.state = 81
+                    self.match(creole_parser.COMMA)
+                    self.state = 82
+                    self.functionArgument()
+                    self.state = 87
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -802,7 +817,7 @@ class creole_parser ( Parser ):
         self.enterRule(localctx, 20, self.RULE_functionArgument)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 85
+            self.state = 91
             self.match(creole_parser.StringLiteral)
         except RecognitionException as re:
             localctx.exception = re
@@ -812,6 +827,22 @@ class creole_parser ( Parser ):
             self.exitRule()
         return localctx
 
+
+
+    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
+        if self._predicates == None:
+            self._predicates = dict()
+        self._predicates[7] = self.namespaceReference_sempred
+        pred = self._predicates.get(ruleIndex, None)
+        if pred is None:
+            raise Exception("No predicate with index:" + str(ruleIndex))
+        else:
+            return pred(localctx, predIndex)
+
+    def namespaceReference_sempred(self, localctx:NamespaceReferenceContext, predIndex:int):
+            if predIndex == 0:
+                return self.precpred(self._ctx, 3)
+         
 
 
 

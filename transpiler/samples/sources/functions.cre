@@ -1,7 +1,8 @@
 // No specifiers mean function does not return anything
 // Parenthesis are required in implementations
 fn foo() {
-
+    // Forward declarations are allowed
+    validFunctionName(32);
 }
 
 // Functions accept arguments
@@ -15,5 +16,5 @@ fn baz() {
 }
 
 // Functions are written in lowerCamelCase
-fn validFunctionName() {
+fn validFunctionName(i32 number) {
 }
