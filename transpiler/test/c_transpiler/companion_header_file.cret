@@ -1,0 +1,11 @@
+fn foo() {
+    bar();
+}
+------
+void foo(void) {
+    bar();
+}
+------
+#pragma once
+
+void foo(void);

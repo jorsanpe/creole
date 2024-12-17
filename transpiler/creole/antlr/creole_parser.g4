@@ -5,16 +5,17 @@ options {
 }
 
 program
-    : headerBlock block*;
+    : headerBlock? block*;
 
 headerBlock
-    : IMPORT LBRACE dependencyList RBRACE
-    |;
+    : IMPORT LBRACE dependencyList? RBRACE;
 
 dependencyList
-    : dependencyList COMMA StringLiteral
-    | StringLiteral
-    |;
+    : dependencyList COMMA dependency
+    | dependency;
+
+dependency
+    : StringLiteral;
 
 block
     : function
@@ -39,20 +40,21 @@ statement
     : functionCall;
 
 functionCall
-    : namespaceReference Identifier LPAREN functionArguments RPAREN SEMI;
+    : namespaceReference? functionIdentifier LPAREN functionArguments? RPAREN SEMI;
 
 namespaceReference
     : namespaceReference namespaceName DOUBLE_COLON
-    | namespaceName DOUBLE_COLON
-    |;
+    | namespaceName DOUBLE_COLON;
+
+functionIdentifier
+    : Identifier;
 
 namespaceName
     : Identifier;
 
 functionArguments
     : functionArgument
-    | functionArgument (COMMA functionArgument)*
-    |;
+    | functionArgument (COMMA functionArgument)*;
 
 functionArgument
     : StringLiteral;

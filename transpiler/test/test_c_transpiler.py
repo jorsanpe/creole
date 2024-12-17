@@ -27,6 +27,11 @@ class TestFunction(unittest.TestCase):
                     print(f'error: {filename}. Transpiled code does not match expectation')
                     print(get_edits_string(c_code.lstrip(), transpiled_source))
 
+                if len(split) == 3:
+                    if transpiler_header != header_code.lstrip():
+                        print(f'error: {filename}. Transpiled header does not match expectation')
+                        print(get_edits_string(header_code.lstrip(), transpiler_header))
+
 
 def get_edits_string(old, new):
     def red(text):
