@@ -1,0 +1,12 @@
+import {
+    "dependency",
+    "second_one"
+}
+
+fn main() {
+}
+------
+#include <dependency.h>
+#include <second_one.h>
+void main(void) {
+}

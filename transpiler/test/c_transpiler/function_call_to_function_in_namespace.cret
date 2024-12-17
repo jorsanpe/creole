@@ -1,7 +1,9 @@
 fn main() {
     Root::Nested::foo();
+    Root::bar();
 }
 ------
 void main(void) {
     Root_Nested_foo();
+    Root_bar();
 }

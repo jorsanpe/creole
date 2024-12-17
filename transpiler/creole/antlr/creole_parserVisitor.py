@@ -14,6 +14,16 @@ class creole_parserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by creole_parser#headerBlock.
+    def visitHeaderBlock(self, ctx:creole_parser.HeaderBlockContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by creole_parser#dependencyList.
+    def visitDependencyList(self, ctx:creole_parser.DependencyListContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by creole_parser#block.
     def visitBlock(self, ctx:creole_parser.BlockContext):
         return self.visitChildren(ctx)

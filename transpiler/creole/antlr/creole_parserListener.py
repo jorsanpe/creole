@@ -17,6 +17,24 @@ class creole_parserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by creole_parser#headerBlock.
+    def enterHeaderBlock(self, ctx:creole_parser.HeaderBlockContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#headerBlock.
+    def exitHeaderBlock(self, ctx:creole_parser.HeaderBlockContext):
+        pass
+
+
+    # Enter a parse tree produced by creole_parser#dependencyList.
+    def enterDependencyList(self, ctx:creole_parser.DependencyListContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#dependencyList.
+    def exitDependencyList(self, ctx:creole_parser.DependencyListContext):
+        pass
+
+
     # Enter a parse tree produced by creole_parser#block.
     def enterBlock(self, ctx:creole_parser.BlockContext):
         pass

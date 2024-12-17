@@ -3,6 +3,7 @@ lexer grammar creole_lexer;
 CLASS: 'class';
 FUNCTION: 'fn';
 NAMESPACE: 'namespace';
+IMPORT: 'import';
 
 IntegerLiteral:
     DecimalIntegerLiteral

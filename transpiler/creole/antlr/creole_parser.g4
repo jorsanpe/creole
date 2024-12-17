@@ -5,7 +5,16 @@ options {
 }
 
 program
-    : block*;
+    : headerBlock block*;
+
+headerBlock
+    : IMPORT LBRACE dependencyList RBRACE
+    |;
+
+dependencyList
+    : dependencyList COMMA StringLiteral
+    | StringLiteral
+    |;
 
 block
     : function

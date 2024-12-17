@@ -15,13 +15,17 @@ class TestFunction(unittest.TestCase):
             with self.subTest(filename, filename=filename):
                 with open(f'test/c_transpiler/{filename}', "r") as stream:
                     full = stream.read()
-                creole, c_code = full.split("------")
+                split = full.split("------")
+                if len(split) == 2:
+                    creole, c_code = split
+                elif len(split) == 3:
+                    creole, c_code, header_code = split
 
-                transpiled = transpile(creole, "C")
+                transpiler_header, transpiled_source = transpile(creole, "C")
 
-                if transpiled != c_code.lstrip():
+                if transpiled_source != c_code.lstrip():
                     print(f'error: {filename}. Transpiled code does not match expectation')
-                    print(get_edits_string(c_code.lstrip(), transpiled))
+                    print(get_edits_string(c_code.lstrip(), transpiled_source))
 
 
 def get_edits_string(old, new):

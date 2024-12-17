@@ -10,10 +10,29 @@ class Transpiler(creole_parserListener):
 
     def __init__(self):
         self.header_stream = io.StringIO()
-        self.output_stream = io.StringIO()
+        self.header_block_stream = io.StringIO()
+        self.source_block_stream = io.StringIO()
         self.indent = 0
         self.print_function = False
         self.namespace_path = []
+
+    def enterHeaderBlock(self, ctx: creole_parser.HeaderBlockContext):
+        if not ctx.children:
+            return
+
+        dependency_list = self.dependency_list(ctx.children[2])
+        for dependency in dependency_list:
+            header = dependency.symbol.text.replace('"', '') + ".h"
+            self.emit_include(header)
+
+    def dependency_list(self, ctx):
+        if not ctx.children:
+            return []
+
+        if len(ctx.children) > 1:
+            return self.dependency_list(ctx.children[0]) + [ctx.children[2]]
+
+        return [ctx.children[0]]
 
     def enterNamespace(self, ctx: creole_parser.NamespaceContext):
         namespace_identifier = ctx.children[1]
@@ -87,21 +106,27 @@ class Transpiler(creole_parserListener):
         )
 
     def transpiled(self):
-        return f'{self.header_stream.getvalue()}{self.output_stream.getvalue()}'
+        return self.header_code(), self.source_code()
+
+    def header_code(self):
+        return self.header_stream.getvalue()
+
+    def source_code(self):
+        return f'{self.header_block_stream.getvalue()}{self.source_block_stream.getvalue()}'
 
     def emit_include(self, header):
-        self.header_stream.write(f'#include <{header}>\n')
+        self.header_block_stream.write(f'#include <{header}>\n')
 
     def emit_start(self, code):
-        self.output_stream.write(f'{" "*self.indent}{code}')
+        self.source_block_stream.write(f'{" " * self.indent}{code}')
 
     def emit_end(self, code):
-        self.output_stream.write(code)
-        self.output_stream.write("\n")
+        self.source_block_stream.write(code)
+        self.source_block_stream.write("\n")
 
     def emit_partial(self, code):
-        self.output_stream.write(code)
+        self.source_block_stream.write(code)
 
     def emit(self, code):
-        self.output_stream.write(f'{" "*self.indent}{code}')
-        self.output_stream.write("\n")
+        self.source_block_stream.write(f'{" " * self.indent}{code}')
+        self.source_block_stream.write("\n")

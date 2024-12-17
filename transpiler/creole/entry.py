@@ -1,7 +1,7 @@
 from antlr4 import *
 from creole.antlr.creole_lexer import creole_lexer
 from creole.antlr.creole_parser import creole_parser
-from creole.transpilers import c, python
+from creole.transpilers import c
 
 
 def transpile(source_code, target_language):
@@ -10,11 +10,7 @@ def transpile(source_code, target_language):
     token_stream = CommonTokenStream(lexer)
     parser = creole_parser(token_stream)
     tree = parser.program()
-    transpiler = None
-    if target_language == "C":
-        transpiler = c.Transpiler()
-    elif target_language == "python":
-        transpiler = python.Transpiler()
+    transpiler = c.Transpiler()
 
     walker = ParseTreeWalker()
     walker.walk(transpiler, tree)
