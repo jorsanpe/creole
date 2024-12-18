@@ -18,6 +18,8 @@ class Transpiler(creole_parserListener):
         self.print_function = False
         self.dependency_list = []
         self.namespace_path = []
+        self.namespace_reference_path = []
+        self.function_call_identifier = None
         self.function_arguments = []
 
     def exitHeaderBlock(self, ctx: creole_parser.HeaderBlockContext):
@@ -47,45 +49,35 @@ class Transpiler(creole_parserListener):
         self.emit('}')
 
     def enterFunctionCall(self, ctx: creole_parser.FunctionCallContext):
-        namespace_path = self.namespace_reference(ctx.children[0])
-        identifier = self.first_identifier(ctx)
-        if identifier.symbol.text == "print":
-            self.emit_include("stdio.h")
-            self.emit_start(f'printf(')
-            self.print_function = True
-        else:
-            self.emit_start(f'{self.function_call_name(namespace_path, identifier)}(')
-
-    def namespace_reference(self, ctx):
-        if isinstance(ctx, antlr4.TerminalNode):
-            return []
-
-        return self.build_namespace_path(ctx)
-
-    def build_namespace_path(self, ctx):
-        if isinstance(ctx, antlr4.TerminalNode):
-            return [ctx]
-
-        if ctx.children[0].getRuleIndex() == creole_parser.RULE_namespaceReference:
-            return self.build_namespace_path(ctx.children[0]) + [ctx.children[1].children[0]]
-
-        return [ctx.children[0].children[0]]
-
-    def enterFunctionArguments(self, ctx: creole_parser.FunctionArgumentsContext):
+        self.namespace_reference_path = []
+        self.function_call_identifier = None
         self.function_arguments = []
-        # function_arguments = ctx
-        # if function_arguments.children:
-        #     first_function_argument = function_arguments.children[0]
-        #     first_function_argument_string = first_function_argument.children[0]
-        #     self.emit_partial(f'{first_function_argument_string}')
+
+    def exitFunctionCall(self, ctx:creole_parser.FunctionCallContext):
+        if self.function_call_identifier.symbol.text == "print":
+            self.emit_include("stdio.h")
+            full_function_identifier = "printf"
+        else:
+            full_function_identifier = "_".join(
+                map(lambda ident: ident.symbol.text, self.namespace_reference_path + [self.function_call_identifier])
+            )
+        function_arguments = ", ".join(
+            map(lambda ident: ident.symbol.text, self.function_arguments)
+        )
+
+        self.emit(f'{full_function_identifier}({function_arguments});')
+
+        if self.function_call_identifier.symbol.text == "print":
+            self.emit(f'printf("\\n");')
+
+    def enterNamespaceReferenceName(self, ctx: creole_parser.NamespaceReferenceNameContext):
+        self.namespace_reference_path.append(ctx.children[0])
+
+    def enterFunctionIdentifier(self, ctx: creole_parser.FunctionIdentifierContext):
+        self.function_call_identifier = ctx.children[0]
 
     def enterFunctionArgument(self, ctx: creole_parser.FunctionArgumentContext):
         self.function_arguments.append(ctx.children[0])
-
-    def exitFunctionCall(self, ctx: creole_parser.FunctionCallContext):
-        self.emit_end(');')
-        if self.print_function:
-            self.emit(f'printf("\\n");')
 
     def first_identifier(self, context):
         for node in context.children:

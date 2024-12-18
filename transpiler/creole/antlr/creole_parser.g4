@@ -43,13 +43,13 @@ functionCall
     : namespaceReference? functionIdentifier LPAREN functionArguments? RPAREN SEMI;
 
 namespaceReference
-    : namespaceReference namespaceName DOUBLE_COLON
-    | namespaceName DOUBLE_COLON;
+    : namespaceReference namespaceReferenceName DOUBLE_COLON
+    | namespaceReferenceName DOUBLE_COLON;
 
 functionIdentifier
     : Identifier;
 
-namespaceName
+namespaceReferenceName
     : Identifier;
 
 functionArguments

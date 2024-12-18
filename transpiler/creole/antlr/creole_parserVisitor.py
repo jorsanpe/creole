@@ -64,8 +64,13 @@ class creole_parserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by creole_parser#namespaceName.
-    def visitNamespaceName(self, ctx:creole_parser.NamespaceNameContext):
+    # Visit a parse tree produced by creole_parser#functionIdentifier.
+    def visitFunctionIdentifier(self, ctx:creole_parser.FunctionIdentifierContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by creole_parser#namespaceReferenceName.
+    def visitNamespaceReferenceName(self, ctx:creole_parser.NamespaceReferenceNameContext):
         return self.visitChildren(ctx)
 
 

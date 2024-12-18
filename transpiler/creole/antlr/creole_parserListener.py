@@ -107,12 +107,21 @@ class creole_parserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by creole_parser#namespaceName.
-    def enterNamespaceName(self, ctx:creole_parser.NamespaceNameContext):
+    # Enter a parse tree produced by creole_parser#functionIdentifier.
+    def enterFunctionIdentifier(self, ctx:creole_parser.FunctionIdentifierContext):
         pass
 
-    # Exit a parse tree produced by creole_parser#namespaceName.
-    def exitNamespaceName(self, ctx:creole_parser.NamespaceNameContext):
+    # Exit a parse tree produced by creole_parser#functionIdentifier.
+    def exitFunctionIdentifier(self, ctx:creole_parser.FunctionIdentifierContext):
+        pass
+
+
+    # Enter a parse tree produced by creole_parser#namespaceReferenceName.
+    def enterNamespaceReferenceName(self, ctx:creole_parser.NamespaceReferenceNameContext):
+        pass
+
+    # Exit a parse tree produced by creole_parser#namespaceReferenceName.
+    def exitNamespaceReferenceName(self, ctx:creole_parser.NamespaceReferenceNameContext):
         pass
 
 
