@@ -1,9 +1,7 @@
 import io
-import antlr4
-
 from creole.antlr.creole_parserListener import creole_parserListener
 from creole.antlr.creole_parser import creole_parser
-
+from creole.transpilers import emitter
 
 INDENT = 4
 
@@ -11,10 +9,13 @@ INDENT = 4
 class Transpiler(creole_parserListener):
 
     def __init__(self):
-        self.header_stream = io.StringIO()
-        self.header_block_stream = io.StringIO()
-        self.source_block_stream = io.StringIO()
-        self.indent = 0
+        self.source_emitter = emitter.Emitter()
+        self.header_emitter = emitter.Emitter()
+
+        # self.header_stream = io.StringIO()
+        # self.header_block_stream = io.StringIO()
+        # self.source_block_stream = io.StringIO()
+        # self.indent = 0
         self.print_function = False
         self.dependency_list = []
         self.namespace_path = []
@@ -25,7 +26,7 @@ class Transpiler(creole_parserListener):
     def exitHeaderBlock(self, ctx: creole_parser.HeaderBlockContext):
         for dependency in self.dependency_list:
             header = dependency.symbol.text.replace('"', '') + ".h"
-            self.emit_include(header)
+            self.source_emitter.emit_top(f'#include <{header}>')
 
     def enterDependency(self, ctx: creole_parser.DependencyContext):
         self.dependency_list.append(ctx.children[0])
@@ -40,22 +41,22 @@ class Transpiler(creole_parserListener):
     def enterFunction(self, ctx: creole_parser.FunctionContext):
         function_identifier = self.first_identifier(ctx)
         function_name = self.function_name(function_identifier)
-        self.emit(f'void {function_name}(void) {{')
-        self.indent += INDENT
+        self.source_emitter.emit(f'void {function_name}(void) {{')
+        self.source_emitter.indent()
         self.print_function = False
 
     def exitFunction(self, ctx: creole_parser.FunctionContext):
-        self.indent -= INDENT
-        self.emit('}')
+        self.source_emitter.deindent()
+        self.source_emitter.emit('}')
 
     def enterFunctionCall(self, ctx: creole_parser.FunctionCallContext):
         self.namespace_reference_path = []
         self.function_call_identifier = None
         self.function_arguments = []
 
-    def exitFunctionCall(self, ctx:creole_parser.FunctionCallContext):
+    def exitFunctionCall(self, ctx: creole_parser.FunctionCallContext):
         if self.function_call_identifier.symbol.text == "print":
-            self.emit_include("stdio.h")
+            self.source_emitter.emit_top('#include <stdio.h>')
             full_function_identifier = "printf"
         else:
             full_function_identifier = "_".join(
@@ -65,10 +66,10 @@ class Transpiler(creole_parserListener):
             map(lambda ident: ident.symbol.text, self.function_arguments)
         )
 
-        self.emit(f'{full_function_identifier}({function_arguments});')
+        self.source_emitter.emit(f'{full_function_identifier}({function_arguments});')
 
         if self.function_call_identifier.symbol.text == "print":
-            self.emit(f'printf("\\n");')
+            self.source_emitter.emit(f'printf("\\n");')
 
     def enterNamespaceReferenceName(self, ctx: creole_parser.NamespaceReferenceNameContext):
         self.namespace_reference_path.append(ctx.children[0])
@@ -105,24 +106,7 @@ class Transpiler(creole_parserListener):
         return self.header_code(), self.source_code()
 
     def header_code(self):
-        return self.header_stream.getvalue()
+        return self.header_emitter.value()
 
     def source_code(self):
-        return f'{self.header_block_stream.getvalue()}{self.source_block_stream.getvalue()}'
-
-    def emit_include(self, header):
-        self.header_block_stream.write(f'#include <{header}>\n')
-
-    def emit_start(self, code):
-        self.source_block_stream.write(f'{" " * self.indent}{code}')
-
-    def emit_end(self, code):
-        self.source_block_stream.write(code)
-        self.source_block_stream.write("\n")
-
-    def emit_partial(self, code):
-        self.source_block_stream.write(code)
-
-    def emit(self, code):
-        self.source_block_stream.write(f'{" " * self.indent}{code}')
-        self.source_block_stream.write("\n")
+        return self.source_emitter.value()
